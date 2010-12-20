@@ -1,0 +1,36 @@
+1) install BSP
+     - put released rootfs/uImage to TFTP_DIRECTORY
+
+     you can change above PATH by
+      - modify TFTP_FILE
+      - modify DHCP_FILE
+
+2) modify DHCP_FILE
+
+     check and modify...
+
+         ------ DHCP_FILE ------------
+         option root-path "xxxx/my-rootfs";
+                                ~~~~~~~~~
+         filename "my-uImage";
+                   ~~~~~~~~~
+         host xxxx { hardware ethernet 00:xx:yy:zz:aa:bb; }
+              ~~~~                     ~~~~~~~~~~~~~~~~~
+         ------------------------------
+
+3) Put TOP/UBUNTU/start_bsp and stop_bsp
+   on your favorite place.
+
+   If you want to start BSP board
+     - remove global LAN from eth0
+     - set local LAN to eth0
+     - run start_bsp
+
+   If you want to stop BSP board
+     - remove local LAN from eth0
+     - set global LAN to eth0 (if needed)
+     - run stop_bsp
+
+
+you can re-check your work in
+  TOP/UBUNTU/comment.log"

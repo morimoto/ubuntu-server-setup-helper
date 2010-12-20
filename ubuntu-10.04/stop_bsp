@@ -1,0 +1,18 @@
+#! /bin/sh
+
+
+echo "stop dhcp server"
+sudo /etc/init.d/dhcp3-server stop
+
+echo "stop NFS server"
+sudo /etc/init.d/nfs-kernel-server stop
+
+echo "stop eth0"
+sudo ifconfig eth0 down
+
+echo "start network manager"
+sudo service network-manager start
+
+echo "start eth0"
+sudo ifconfig eth0 up
+

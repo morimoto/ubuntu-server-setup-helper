@@ -1,0 +1,113 @@
+============== -*- outline -*- ==============
+
+         BSP setup helper for ubuntu
+
+2010/12  morimoto
+=============================================
+
+=============================================
+* What is this ?
+=============================================
+
+	This is ubuntu setup helper for Linux kernel of target board BSP.
+	NFS boot linux kernel needs NFS/DHCP/TFTP server
+	and its settings on your Host PC.
+	But these setup is difficult for Linux beginner or Windows user ;P
+
+	This helper will install and setup NFS/DHCP/TFTP server.
+
+=============================================
+* Assume
+=============================================
+
+	***** THIS IS VERY IMPORTANT ******
+
+	This helper have some limitation because
+	it is difficult to help for all environment.
+
+	Please check below on your PC.
+
+	***********************************
+
+	- Your PC have ethernet card
+	               ~~~~~~~~~~~~~
+	 Global network is needed to install software to your Host PC,
+	 and Local network is needed to connect for HostPC <--> target board.
+
+		- You can use this helper even though your PC have only 1 ethernet card.
+		  Then, cable change (for local net / for global net) is needed some times.
+
+	- Your PC is clean installed ubuntu
+
+		- please check ${HELPER}/ubuntu-XX folder which is supported.
+		- If your PC already have some server, this helper skip it.
+
+=============================================
+* How to use it ?
+=============================================
+
+**  create "server-setting" file
+------------------------------------
+
+	This helper needs "server-setting" file which have local network settings.
+	Local network setting is used to connect for HostPC <--> target board.
+
+	You can use "sample.server-setting" for starter.
+	Please copy and edit it for your environment.
+
+**  run "setup.sh" on root authority
+------------------------------------
+
+	Below command show start run setup.sh.
+	"sudo" command is needed.
+
+		----------------------------------------
+		> cd ${HELPER}
+		> sudo ./setup.sh
+		----------------------------------------
+
+**  install BSP to your Host PC
+------------------------------------
+
+	This helper will show you what is your next step.
+	You can find the list / howto in ${TOP}/${UBUNTU}/comment.log"
+
+**  modify your DHCP setting file for your target board.
+-------------------------------------------------------
+
+	You can find the list / howto in ${TOP}/${UBUNTU}/comment.log"
+
+**  set local network address
+------------------------------------
+
+	It is depend on your system.
+
+***     If your Host PC have global/local network (eth0 / eth1)
+
+	set your local network address which is selected on server-setting to ethX (local)
+	if local net is eth1...
+
+	type1)
+		----------------------------------------
+		> ipconfig eth1 xxx.xxx.xxx.xxx
+		----------------------------------------
+
+	type2)
+		[system] - [network settings]
+
+***     If your Host PC have only 1 network
+
+	This helper hope "${TOP}/${UBUNTU}/start_bsp" became good sample for you.
+	good luck ;P
+
+**  start server
+------------------------------------
+
+***     start tftp server
+		sudo /etc/init.d/tftpd-hpa restart
+
+***     start dhcp server
+		sudo /etc/init.d/dhcp3-server restart
+
+***     start NFS server
+		sudo /etc/init.d/nfs-kernel-server restart

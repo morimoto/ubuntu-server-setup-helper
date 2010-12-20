@@ -1,0 +1,4 @@
+INS_LIST="TFTP NFS DHCP tools comment"
+NFS_FILE=/etc/exports
+TFTP_FILE=/etc/default/tftpd-hpa
+DHCP_FILE=/etc/dhcp3/dhcpd.conf

@@ -1,0 +1,17 @@
+#===============================
+# local net setting
+# subnet mask is 255.255.255.0
+#
+# local network
+# Host PC (= your PC) address on local net
+#===============================
+LOCAL_NET=192.168.10.0
+HOST_ADDR=192.168.10.30
+
+#===============================
+# DHCP range
+#===============================
+DHCP_START=192.168.10.100	# your dhcp will pool
+DHCP_END=192.168.10.110		# 192.168.10.100 - 192.168.10.110
+				# This area should keep out of HOST_ADDR
+				# Your 

@@ -1,0 +1,24 @@
+#! /bin/sh
+
+
+echo "stop network manager"
+sudo service network-manager stop
+
+echo "stop eth0"
+sudo ifconfig eth0 down
+
+echo "setup eth0"
+sudo ifconfig eth0 HOST_ADDR up
+
+echo "start tftp server"
+sudo /etc/init.d/tftpd-hpa restart
+
+echo "start dhcp server"
+sudo /etc/init.d/dhcp3-server restart
+
+echo "start NFS server"
+sudo /etc/init.d/nfs-kernel-server restart
+
+echo "start minicom"
+sudo LANG=C minicom -s
+
