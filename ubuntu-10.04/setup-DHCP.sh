@@ -17,14 +17,14 @@ TMP=`dpkg -l | grep ${SRV}`
 #===============================
 # check TFTP server
 #===============================
-if [ ! -f /etc/default/tftpd-hpa ]; then
+if [ ! -f ${TFTP_FILE} ]; then
     echo
     echo "	install TFTP first"
     echo
     exit 1
 fi
 
-. /etc/default/tftpd-hpa
+. ${TFTP_FILE}
 
 #===============================
 # check server

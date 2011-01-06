@@ -11,13 +11,13 @@ echo "setup eth0"
 sudo ifconfig eth0 HOST_ADDR up
 
 echo "start tftp server"
-sudo /etc/init.d/tftpd-hpa restart
+sudo service tftpd-hpa start
 
 echo "start dhcp server"
-sudo /etc/init.d/dhcp3-server restart
+sudo service dhcp3-server start
 
 echo "start NFS server"
-sudo /etc/init.d/nfs-kernel-server restart
+sudo service nfs-kernel-server start
 
 echo "start minicom"
 sudo LANG=C minicom -s

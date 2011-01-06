@@ -5,7 +5,7 @@
 #
 #===============================
 export TOP=`pwd`
-export HELPER=BSP-setup-helper
+export HELPER=ubuntu-server-setup-helper
 export HELPER_VER=0.1
 
 #===============================
@@ -76,3 +76,5 @@ do
     ${TOP}/${UBUNTU}/setup-${l}.sh | tee ${TOP}/${UBUNTU}/${l}.log
     [ $? -eq 1 ] && exit 1
 done
+
+gedit ${TOP}/${UBUNTU}/comment.log &

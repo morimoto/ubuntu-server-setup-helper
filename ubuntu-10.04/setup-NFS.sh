@@ -14,14 +14,14 @@ LOCAL_NET=`echo ${LOCAL_NET}  | cut -d'.' -f1-3`
 #===============================
 # check TFTP server
 #===============================
-if [ ! -f /etc/default/tftpd-hpa ]; then
+if [ ! -f ${TFTP_FILE} ]; then
     echo
     echo "	install TFTP first"
     echo
     exit 1
 fi
 
-. /etc/default/tftpd-hpa
+. ${TFTP_FILE}
 
 SET="${TFTP_DIRECTORY} ${LOCAL_NET}.0/255.255.255.0(rw,async,no_root_squash,no_subtree_check)"
 FILE=${NFS_FILE}

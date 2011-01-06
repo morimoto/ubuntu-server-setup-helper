@@ -1,30 +1,37 @@
 1) install BSP
-     - put released rootfs/uImage to TFTP_DIRECTORY
-
-     you can change above PATH by
-      - modify TFTP_FILE
-      - modify DHCP_FILE
+     - check last settings of DHCP_FILE,
+       and put released rootfs/uImage to TFTP_DIRECTORY
 
 2) modify DHCP_FILE
 
-     check and modify...
+     check and modify last of DHCP_FILE file
 
          ------ DHCP_FILE ------------
-         option root-path "xxxx/my-rootfs";
-                                ~~~~~~~~~
-         filename "my-uImage";
-                   ~~~~~~~~~
+         option root-path "xxxx/my-board/my-rootfs";
+                                ~~~~~~~~~~~~~~~~~~
+         filename "my-board/my-uImage";
+                   ~~~~~~~~~~~~~~~~~~
          host xxxx { hardware ethernet 00:xx:yy:zz:aa:bb; }
               ~~~~                     ~~~~~~~~~~~~~~~~~
          ------------------------------
 
-3) Put TOP/UBUNTU/start_bsp and stop_bsp
-   on your favorite place.
+3) This is optional
+   If your Host PC have 2 or more ether net card, skip here.
+
+   If your Host PC ether net card is only 1,
+   you have to change eth settings to local net work for HostPC <--> BSP board.
+
+   Please check TOP/UBUNTU/start_bsp and stop_bsp.
+   These will good sample for you
+   to change global net <--> local net on 1port eth Host PC.
 
    If you want to start BSP board
      - remove global LAN from eth0
      - set local LAN to eth0
-     - run start_bsp
+     - connect serial cable Host PC <--> BSP board (check BSP README).
+     - run start_bsp script (minicom will start)
+     - change minicom settings
+     - enjoy !!
 
    If you want to stop BSP board
      - remove local LAN from eth0

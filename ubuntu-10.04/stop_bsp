@@ -1,11 +1,14 @@
 #! /bin/sh
 
 
+echo "stop tftp server"
+sudo service tftpd-hpa stop
+
 echo "stop dhcp server"
-sudo /etc/init.d/dhcp3-server stop
+sudo service dhcp3-server stop
 
 echo "stop NFS server"
-sudo /etc/init.d/nfs-kernel-server stop
+sudo service nfs-kernel-server stop
 
 echo "stop eth0"
 sudo ifconfig eth0 down

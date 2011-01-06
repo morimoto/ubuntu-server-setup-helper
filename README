@@ -104,10 +104,10 @@
 ------------------------------------
 
 ***     start tftp server
-		sudo /etc/init.d/tftpd-hpa restart
+		sudo service tftpd-hpa start
 
 ***     start dhcp server
-		sudo /etc/init.d/dhcp3-server restart
+		sudo service dhcp3-server start
 
 ***     start NFS server
-		sudo /etc/init.d/nfs-kernel-server restart
+		sudo service nfs-kernel-server start
