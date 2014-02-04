@@ -7,7 +7,7 @@
 . ${TOP}/server-setting
 . ${TOP}/${UBUNTU}/setting
 
-SRV=tftpd-hpa
+SRV=${TFTPD}
 FILE=${TFTP_FILE}
 
 TMP=`dpkg -l | grep ${SRV}`

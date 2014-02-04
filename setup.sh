@@ -6,7 +6,7 @@
 #===============================
 export TOP=`pwd`
 export HELPER=ubuntu-server-setup-helper
-export HELPER_VER=0.1
+export HELPER_VER=0.2
 
 #===============================
 # check ubuntu PC
@@ -73,7 +73,7 @@ do
     echo " Set up ${l}"
     echo "=================================="
     echo
-    ${TOP}/${UBUNTU}/setup-${l}.sh | tee ${TOP}/${UBUNTU}/${l}.log
+    ${TOP}/ubuntu-setting/setup-${l}.sh | tee ${TOP}/${UBUNTU}/${l}.log
     [ $? -eq 1 ] && exit 1
 done
 

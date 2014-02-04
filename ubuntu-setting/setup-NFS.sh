@@ -7,7 +7,7 @@
 . ${TOP}/server-setting
 . ${TOP}/${UBUNTU}/setting
 
-SRV=nfs-kernel-server
+SRV=${NFSD}
 TMP=`dpkg -l | grep ${SRV}`
 LOCAL_NET=`echo ${LOCAL_NET}  | cut -d'.' -f1-3`
 

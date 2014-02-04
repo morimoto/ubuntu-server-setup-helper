@@ -13,7 +13,7 @@ echo " BSP helper finished setup"
 echo " But you should modify below files by yourself"
 echo
 
-sed -e "s|LOCAL_NET|${LOCAL_NET}|g"		${TOP}/${UBUNTU}/INSTALL_BSP |\
+sed -e "s|LOCAL_NET|${LOCAL_NET}|g"		${TOP}/ubuntu-setting/INSTALL_BSP |\
 sed -e "s|HOST_ADDR|${HOST_ADDR}|g"		|\
 sed -e "s|DHCP_START|${DHCP_START}|g"		|\
 sed -e "s|DHCP_END|${DHCP_END}|g"		|\

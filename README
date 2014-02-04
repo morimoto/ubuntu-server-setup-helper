@@ -17,6 +17,13 @@
 	This helper will install and setup NFS/DHCP/TFTP server.
 
 =============================================
+* Supported Ubuntu
+=============================================
+
+	ubuntu 10.04 LTS
+	ubuntu 12.04 LTS
+
+=============================================
 * Assume
 =============================================
 
@@ -107,7 +114,8 @@
 		sudo service tftpd-hpa start
 
 ***     start dhcp server
-		sudo service dhcp3-server start
+		sudo service dhcp3-server start		# ubuntu 10.04
+		sudo service isc-dhcp-server start	# ubuntu 12.04
 
 ***     start NFS server
 		sudo service nfs-kernel-server start

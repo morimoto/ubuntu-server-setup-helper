@@ -13,5 +13,6 @@ if [ "x" = "x${TMP}" ]; then
     apt-get install minicom
 fi
 
-sed -e "s|HOST_ADDR|${HOST_ADDR}|g" ${TOP}/${UBUNTU}/__start_bsp > ${TOP}/${UBUNTU}/start_bsp
+sed -e "s|HOST_ADDR|${HOST_ADDR}|g" ${TOP}/ubuntu-setting/__start_bsp > ${TOP}/${UBUNTU}/start_bsp
 chmod +x ${TOP}/${UBUNTU}/start_bsp
+cp ${TOP}/ubuntu-setting/stop_bsp ${TOP}/${UBUNTU}/

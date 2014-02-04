@@ -8,10 +8,10 @@
 . ${TOP}/server-setting
 . ${TOP}/${UBUNTU}/setting
 
-SRV=dhcp3-server
 FILE=${DHCP_FILE}
-MYCONF=${TOP}/${UBUNTU}/my.dhcpd.conf
+MYCONF=${TOP}/ubuntu-setting/my.dhcpd.conf
 
+SRV=${DHCPD}
 TMP=`dpkg -l | grep ${SRV}`
 
 #===============================
