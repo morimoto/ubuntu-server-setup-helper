@@ -6,7 +6,7 @@
 #===============================
 export TOP=`pwd`
 export HELPER=ubuntu-server-setup-helper
-export HELPER_VER=0.2
+export HELPER_VER=0.3
 
 #===============================
 # check ubuntu PC
