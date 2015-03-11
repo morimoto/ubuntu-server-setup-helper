@@ -1,0 +1,9 @@
+--- /etc/init/isc-dhcp-server.conf	2015-03-10 18:22:33.864857461 +0900
++++ /etc/init/isc-dhcp-server.conf	2015-03-11 09:21:28.841062150 +0900
+@@ -55,5 +55,6 @@
+         chown root:root /var/lib/dhcp/dhcpd.leases~
+     fi
+ 
++    sleep 10
+     exec dhcpd -user dhcpd -group dhcpd -f -q -4 -pf /run/dhcp-server/dhcpd.pid -cf $CONFIG_FILE $INTERFACES
+ end script
