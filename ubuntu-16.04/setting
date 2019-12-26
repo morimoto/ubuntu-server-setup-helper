@@ -1,0 +1,9 @@
+INS_LIST="TFTP NFS DHCP tools patch comment"
+DHCPD=isc-dhcp-server
+TFTPD=tftpd-hpa
+NFSD=nfs-kernel-server
+NFS_FILE=/etc/exports
+TFTP_FILE=/etc/default/tftpd-hpa
+DHCP_FILE=/etc/dhcp/dhcpd.conf
+PATCH="isc-dhcp-server.patch tftpd-hpa.patch"
+BK_ORIG="/etc/init/isc-dhcp-server.conf /etc/init/tftpd-hpa.conf"
