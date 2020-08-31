@@ -26,7 +26,7 @@ fi
 # install server
 #===============================
 echo "	install ${SRV}"
-apt-get install ${SRV}
+apt-get install -y ${SRV}
 if [ $? -ne 0 ]; then
     echo "	install ${SRV} failed"
     exit 1
