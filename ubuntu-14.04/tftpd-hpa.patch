@@ -1,9 +1,0 @@
---- /etc/init/tftpd-hpa.conf	2013-09-21 04:04:28.000000000 +0900
-+++ /etc/init/tftpd-hpa.conf	2015-03-11 09:21:08.777061716 +0900
-@@ -47,5 +47,6 @@
- 	if [ -f ${DEFAULTS} ]; then
- 		. ${DEFAULTS}
- 	fi
-+	sleep 10
- 	exec /usr/sbin/in.tftpd --listen  --user ${TFTP_USERNAME} --address ${TFTP_ADDRESS} ${TFTP_OPTIONS} ${TFTP_DIRECTORY}
- end script
