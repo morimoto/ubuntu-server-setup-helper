@@ -1,43 +1,51 @@
-1) install BSP
-     - check last settings of DHCP_FILE,
-       and put released rootfs/uImage to TFTP_DIRECTORY
+This helper is assuming
 
-2) modify DHCP_FILE
+	Image/rootfs are located at TFTP_DIRECTORY
 
-     check and modify last of DHCP_FILE file
+		TFTP_DIRECTORY/board0/rootfs
+		TFTP_DIRECTORY/board0/Image
+		...
+
+1) Modify TFTP_FILE (option)
+
+	Default TFTP path is TFTP_DIRECTORY
+	You can change the path by editing TFTP_FILE
+
+	Uboot needs to use like below
+
+		> tftp 0xNNNNN board0/Image
+
+2) Modify DHCP_FILE
+
+	You need to setup board settings.
+		(A) Mac address
+		(B) rootfs path
+		(C) IP address
 
          ------ DHCP_FILE ------------
-         option root-path "xxxx/my-board/my-rootfs";
-                                ~~~~~~~~~~~~~~~~~~
-         filename "my-board/my-uImage";
-                   ~~~~~~~~~~~~~~~~~~
-         host xxxx { hardware ethernet 00:xx:yy:zz:aa:bb; }
-              ~~~~                     ~~~~~~~~~~~~~~~~~
+	...
+	group {
+		# ethernet = board MAC address
+		host board0 {
+(A)			hardware ethernet 00:11:22:33:44:55;
+(B)			option root-path "/board0/rootfs,tcp,v4";
+(C)			fixed-address 192.168.10.xxx;
+		}
+		...
+	}
          ------------------------------
 
-3) This is optional
-   If your Host PC have 2 or more ether net card, skip here.
+3) Modify NFS_FILE
 
-   If your Host PC ether net card is only 1,
-   you have to change eth settings to local net work for HostPC <--> BSP board.
+	NFS v4 is used, and its settings should be like below.
+	Please that the path with DHCP settings
 
-   Please check TOP/UBUNTU/start_bsp and stop_bsp.
-   These will good sample for you
-   to change global net <--> local net on 1port eth Host PC.
-
-   If you want to start BSP board
-     - remove global LAN from eth0
-     - set local LAN to eth0
-     - connect serial cable Host PC <--> BSP board (check BSP README).
-     - run start_bsp script (minicom will start)
-     - change minicom settings
-     - enjoy !!
-
-   If you want to stop BSP board
-     - remove local LAN from eth0
-     - set global LAN to eth0 (if needed)
-     - run stop_bsp
-
+         ------ NFS_FILE ------------
+	TFTP_DIRECTORY				LOCAL_NET/24(rw,sync,no_root_squash,no_subtree_check,fsid=0)
+	TFTP_DIRECTORY/board0/rootfs		LOCAL_NET/24(rw,sync,no_root_squash,no_subtree_check)
+	TFTP_DIRECTORY/board1/rootfs		LOCAL_NET/24(rw,sync,no_root_squash,no_subtree_check)
+	TFTP_DIRECTORY/board2/rootfs		LOCAL_NET/24(rw,sync,no_root_squash,no_subtree_check)
+         ------------------------------
 
 you can re-check your work in
-  TOP/UBUNTU/comment.log"
+  TOP/UBUNTU/comment.log

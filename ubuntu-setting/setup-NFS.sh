@@ -9,7 +9,6 @@
 
 SRV=${NFSD}
 TMP=`dpkg -l | grep ${SRV}`
-LOCAL_NET=`echo ${LOCAL_NET}  | cut -d'.' -f1-3`
 
 #===============================
 # check TFTP server
@@ -23,7 +22,6 @@ fi
 
 . ${TFTP_FILE}
 
-SET="${TFTP_DIRECTORY} ${LOCAL_NET}.0/255.255.255.0(rw,async,no_root_squash,no_subtree_check)"
 FILE=${NFS_FILE}
 
 #===============================
@@ -35,8 +33,6 @@ if [ "x" != "x${TMP}" ]; then
     echo "	So this script can not setup it"
     echo
     echo "	Check \"${FILE}\" and add below by your self (if needed)"
-    echo
-    echo "${SET}"
     echo
     exit 0
 fi
@@ -64,4 +60,7 @@ echo "	setup server"
 
 echo                                                  >> ${FILE}
 echo "# below is added by ${HELPER} : ${HELPER_VER}"  >> ${FILE}
-echo "${SET}"                                         >> ${FILE}
+echo "${TFTP_DIRECTORY}			${LOCAL_NET}/24(rw,sync,no_root_squash,no_subtree_check,fsid=0)"	>> ${FILE}
+echo "${TFTP_DIRECTORY}/board0/rootfs	${LOCAL_NET}/24(rw,sync,no_root_squash,no_subtree_check)"		>> ${FILE}
+echo "${TFTP_DIRECTORY}/board1/rootfs	${LOCAL_NET}/24(rw,sync,no_root_squash,no_subtree_check)"		>> ${FILE}
+echo "${TFTP_DIRECTORY}/board2/rootfs	${LOCAL_NET}/24(rw,sync,no_root_squash,no_subtree_check)"		>> ${FILE}
