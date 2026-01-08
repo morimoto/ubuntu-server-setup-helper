@@ -68,8 +68,6 @@ echo "# below is added by ${HELPER} : ${HELPER_VER}"  >> ${FILE}
 
 sed -e "s|LOCAL_NET|${LOCAL_NET}|g"		${TMP} |\
 sed -e "s|HOST_ADDR|${HOST_ADDR}|g"		|\
-sed -e "s|DHCP_START|${DHCP_START}|g"		|\
-sed -e "s|DHCP_END|${DHCP_END}|g"		|\
 sed -e "s|NFS_FILE|${NFS_FILE}|g"		|\
 sed -e "s|TFTP_FILE|${TFTP_FILE}|g"		|\
 sed -e "s|TFTP_DIRECTORY|${TFTP_DIRECTORY}|g" >> ${FILE}
