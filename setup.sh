@@ -77,4 +77,4 @@ do
     [ $? -eq 1 ] && exit 1
 done
 
-gedit ${TOP}/${UBUNTU}/comment.log &
+echo "You can see this info at ./${UBUNTU}/comment.log"
